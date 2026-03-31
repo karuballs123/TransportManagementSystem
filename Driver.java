@@ -1,51 +1,23 @@
-public class Driver extends Person {
+public class Driver {
+    private String id;
+    private String name;
     private String licenseNumber;
-    private Vehicle assignedVehicle;
 
-    public Driver(String driverId, String name, String licenseNumber) {
-        super(driverId, name);
-        validateLicenseNumber(licenseNumber);
+    public Driver(String id, String name, String licenseNumber) {
+        this.id = id;
+        this.name = name;
         this.licenseNumber = licenseNumber;
     }
-    
-    private void validateLicenseNumber(String licenseNumber) {
-        if (licenseNumber == null || licenseNumber.trim().isEmpty()) {
-            throw new IllegalArgumentException("License number cannot be null or empty");
-        }
-        // Basic license number format validation
-        if (!licenseNumber.matches("^[A-Z0-9-]+$")) {
-            throw new IllegalArgumentException("Invalid license number format");
-        }
+
+    public String getId() {
+        return id;
     }
 
-    @Override
-    public String getRoleDescription() {
-        return "Driver";
-    }
-
-    public void assignVehicle(Vehicle vehicle) {
-        try {
-            if (vehicle == null) {
-                throw new IllegalArgumentException("Cannot assign null vehicle");
-            }
-            this.assignedVehicle = vehicle;
-            System.out.println(getName() + " assigned to vehicle " + vehicle.getPlateNumber());
-        } catch (IllegalArgumentException e) {
-            System.err.println("Failed to assign vehicle: " + e.getMessage());
-            throw e;
-        }
+    public String getName() {
+        return name;
     }
 
     public String getLicenseNumber() {
         return licenseNumber;
-    }
-
-    public void setLicenseNumber(String licenseNumber) {
-        validateLicenseNumber(licenseNumber);
-        this.licenseNumber = licenseNumber;
-    }
-
-    public Vehicle getAssignedVehicle() {
-        return assignedVehicle;
     }
 }
