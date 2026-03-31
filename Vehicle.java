@@ -1,7 +1,5 @@
-public abstract class Vehicle {
-    private static int totalVehicles = 0; 
-
-    private final String vehicleId;
+public class Vehicle {
+    private String vehicleId;
     private String plateNumber;
     private int capacity;
 
@@ -9,23 +7,8 @@ public abstract class Vehicle {
         this.vehicleId = vehicleId;
         this.plateNumber = plateNumber;
         this.capacity = capacity;
-        totalVehicles++;
     }
 
-   
-    public abstract double calculateFare(double distanceKm);
-
-    public void displayVehicleInfo() {
-        System.out.println("Vehicle ID: " + vehicleId);
-        System.out.println("Plate Number: " + plateNumber);
-        System.out.println("Capacity: " + capacity);
-    }
-
-    public static int getTotalVehicles() {
-        return totalVehicles;
-    }
-
-   
     public String getVehicleId() {
         return vehicleId;
     }
@@ -34,18 +17,13 @@ public abstract class Vehicle {
         return plateNumber;
     }
 
-    public void setPlateNumber(String plateNumber) {
-        this.plateNumber = plateNumber;
-    }
-
     public int getCapacity() {
         return capacity;
     }
 
-    public void setCapacity(int capacity) {
-        if (capacity <= 0) {
-            throw new IllegalArgumentException("Capacity must be > 0");
-        }
-        this.capacity = capacity;
+    public void displayVehicleInfo() {
+        System.out.println("ID: " + vehicleId);
+        System.out.println("Plate: " + plateNumber);
+        System.out.println("Capacity: " + capacity);
     }
 }
