@@ -1,16 +1,17 @@
-public class Passenger extends Person implements Payable {
+public class Passenger {
+    private String id;
+    private String name;
 
-    public Passenger(String passengerId, String name) {
-        super(passengerId, name);
+    public Passenger(String id, String name) {
+        this.id = id;
+        this.name = name;
     }
 
-    @Override
-    public String getRoleDescription() {
-        return "Passenger";
+    public String getId() {
+        return id;
     }
 
-    @Override
-    public void makePayment(double amount) {
-        System.out.printf("%s paid KES %.2f%n", getName(), amount);
+    public String getName() {
+        return name;
     }
 }
